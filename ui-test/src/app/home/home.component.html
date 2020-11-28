@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<h2 class="head-view">Category List</h2>
+<div class="table-view">
+  <div *ngIf="!isCatData">
+    <h3>
+      No Category Data Found!
+    </h3>
+  </div>
+  <div *ngIf="isCatData">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Slug</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of category">
+          <td>{{cat.name}}</td>
+          <td>{{cat.slug}}</td>
+          <td>{{cat.status}}</td>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="table-view" *ngIf="isCatData">
+  <select (change)="selectCategory($event.target.value)">
+    <option value="0">Select a Category</option>
+    <option *ngFor="let cat of category" value={{cat._id}}>
+      {{cat.name}}
+    </option>
+  </select>
+</div>
+
+<h2 class="head-view">Sub Category List</h2>
+<div class="table-view">
+  <div *ngIf="!isSubCatData">
+    <h3>
+      No Sub Category Data Found!
+    </h3>
+  </div>
+  <div *ngIf="isSubCatData">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Slug</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sub of subcategory">
+          <td>{{sub.name}}</td>
+          <td>{{sub.slug}}</td>
+          <td>{{sub.status}}</td>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
